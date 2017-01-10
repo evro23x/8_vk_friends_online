@@ -1,5 +1,4 @@
 from getpass import getpass
-import sys
 import vk
 import test_config
 
@@ -9,10 +8,7 @@ def get_user_login():
 
 
 def get_user_password():
-    user_password = getpass('Введите пароль: ')
-    if not user_password:
-        sys.exit('Пароль не может быть пустым')
-    return user_password
+    return getpass('Введите пароль: ')
 
 
 def get_online_friends(login, password):
@@ -28,8 +24,9 @@ def get_online_friends(login, password):
 
 
 def output_friends_to_console(friends_online):
+    print("Список онлайн пользователей из френд-листа:")
     for person in friends_online:
-        print("Список онлайн пользователей из френд-листа: \n%s %s" % (person['last_name'], person['first_name']))
+        print("{first_name} {last_name}".format(**person))
 
 
 if __name__ == '__main__':
